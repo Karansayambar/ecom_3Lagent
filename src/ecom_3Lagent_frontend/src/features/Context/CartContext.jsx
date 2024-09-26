@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
 export const CartCounterContext = createContext();
 
@@ -16,6 +17,7 @@ export const CartCounterProvider = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+
   const handleAddCart = (id, item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === id);
     
@@ -26,8 +28,10 @@ export const CartCounterProvider = ({ children }) => {
           : cartItem
       );
       setCartItems(updatedItems);
+      toast.success("Item Added in Cart 👌");
     } else {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      toast.success("Item Added in Cart 👌");
     }
   };
   
@@ -58,6 +62,8 @@ export const CartCounterProvider = ({ children }) => {
       )
       .filter((item) => item.quantity > 0);
     setCartItems(updatedItems);
+    toast.success("Item Removed from Cart 🤙🏻");
+
   };
 
   return (

@@ -10,6 +10,8 @@ import CartLayout from './layouts/CartLayout';
 import ProductLayout from './layouts/ProductLayout';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -43,6 +45,7 @@ function App() {
           )}
         </Routes>
         <Footer />
+        <ToastContainer />
       </BrowserRouter>
     </main>
   );
